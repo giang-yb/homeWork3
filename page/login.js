@@ -1,7 +1,8 @@
-import {inputCommon} from './common/inputCommon.js';
-import { inputCheckBox } from './common/inputCheckBox.js';
-import { setScreen } from './index.js';
-import { Register } from './register.js'
+import { Chat } from '../common/chat.js';
+import {inputCommon} from '../common/inputCommon.js';
+import { inputCheckBox } from '../common/inputCheckBox.js';
+import { setScreen } from '../index.js';
+import { Register } from '../page/register.js'
 
 class Login {
     image = document.createElement("img");
@@ -93,9 +94,7 @@ class Login {
         this.form.classList.add('form');
 
 
-        this.btnLogin.addEventListener("click", (e) => {
-            e.preventDefault();
-        })
+        this.btnLogin.addEventListener("click", this.handleLogin);
         this.btnRegister.addEventListener("click", this.handleRegister);
 
         this.container.appendChild(this.image);
@@ -107,6 +106,32 @@ class Login {
         this.socials.appendChild(this.faceBook);
         this.socials.appendChild(this.twitter);
         this.socials.appendChild(this.google);
+    }
+
+    handleLogin = (e) => {
+        e.preventDefault();
+        const email = this.inputEmail.getValue();
+        const password = this.inputPass.getValue();
+
+        if (!email) {
+            this.inputEmail.setErrMessage("Email cannot be empty");
+        } else {
+            this.inputEmail.setErrMessage("");
+        }
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                // ...
+                console.log('Đăng nhập thành công');
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
+
+        const chatScreen = new Chat();
+        setScreen(chatScreen.container);
     }
 
     handleRegister = (e) =>{

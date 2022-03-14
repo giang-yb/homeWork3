@@ -1,4 +1,5 @@
-import { Login } from "./login.js"
+import { Login } from "../page/login.js"
+import { Chat } from "./common/chat.js";
 
 const app = document.querySelector("#app");
 
@@ -7,7 +8,20 @@ const setScreen = (container) => {
     app.appendChild(container);
 }
 
-const loginScreen = new Login();
-app.appendChild(loginScreen.container);
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
 
-export {setScreen}
+        const chat = new Chat();
+        setScreen(chat.container);
+    } else {
+        // User is signed out
+        // Set default screen
+        const loginScreen = new Login();
+        setScreen(loginScreen.container);
+    }
+});
+
+export { setScreen }

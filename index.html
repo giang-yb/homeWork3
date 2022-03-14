@@ -22,7 +22,24 @@
 
         </div>
     </div>
-    <script src="./index.js" type="module"></script>
 </body>
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app-compat.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore-compat.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-auth-compat.js"></script>
+<script>
+    const firebaseApp = firebase.initializeApp({
+        apiKey: "AIzaSyBRHbKmQXNIq2QXxzbEDxT-MSnifB4FZXg",
+        authDomain: "myapp-e815c.firebaseapp.com",
+        projectId: "myapp-e815c",
+        storageBucket: "myapp-e815c.appspot.com",
+        messagingSenderId: "760982894906",
+        appId: "1:760982894906:web:e3f2487bcc64345eabf803"
+    });
+    // const db = firebaseApp.firestore();
+    // const auth = firebaseApp.auth();
+</script>
+
+<script src="./index.js" type="module"></script>
+
 
 </html>
