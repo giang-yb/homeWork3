@@ -1,13 +1,19 @@
+import { ConversationList } from '../chat/conversationList.js'
+
 class Chat {
     container = document.createElement('div');
     btnLogOut = document.createElement("button");
 
-    constructor() {
-        this.container.innerHTML = "Chat";
-        this.btnLogOut.innerHTML = "Log out";
+    conversationList = new ConversationList();
 
-        this.container.appendChild(this.btnLogOut);
-        this.btnLogOut.addEventListener("click", this.handleLogOut);
+    constructor() {
+
+        this.container.appendChild(this.conversationList.container);
+        // this.container.innerHTML = "Chat";
+        // this.btnLogOut.innerHTML = "Log out";
+
+        // this.container.appendChild(this.btnLogOut);
+        // this.btnLogOut.addEventListener("click", this.handleLogOut);
     }
 
     handleLogOut = (e) => {

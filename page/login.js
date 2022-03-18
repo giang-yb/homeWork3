@@ -1,4 +1,4 @@
-import { Chat } from '../common/chat.js';
+import { Chat } from '../page/chat.js';
 import {inputCommon} from '../common/inputCommon.js';
 import { inputCheckBox } from '../common/inputCheckBox.js';
 import { setScreen } from '../index.js';

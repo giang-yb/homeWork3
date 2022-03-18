@@ -1,5 +1,5 @@
-import { Login } from "../page/login.js"
-import { Chat } from "./common/chat.js";
+import { Login } from "./page/login.js"
+import { Chat } from "./page/chat.js";
 
 const app = document.querySelector("#app");
 
