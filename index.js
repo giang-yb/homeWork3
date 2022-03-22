@@ -24,4 +24,4 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-export { setScreen }
+export { setScreen };

@@ -7,7 +7,7 @@ class CreateConversationForm {
     modal = new Modal();
 
     form = document.createElement('form');
-
+    // First: current user
     conversationNameInput = new inputCommon(
         "Conversation Name",
         "text",
@@ -35,10 +35,13 @@ class CreateConversationForm {
     }
 
     handleCreateConversation = () => {
-        const name = this.conversationNameInput.getValue(); 
+        console.log(firebase.auth())
+        const name = this.conversationNameInput.getValue();
         db.collection("conversations").add({
             name: name,
             users: [firebase.auth().currentUser.email],
+            //nó bị ở đây a ạ
+
         });
     };
 

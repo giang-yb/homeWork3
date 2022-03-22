@@ -113,6 +113,8 @@ class Login {
         const email = this.inputEmail.getValue();
         const password = this.inputPass.getValue();
 
+            console.log(email);
+            console.log(password);
         if (!email) {
             this.inputEmail.setErrMessage("Email cannot be empty");
         } else {
@@ -120,8 +122,12 @@ class Login {
         }
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
+
+                console.log(userCredential);
                 // Signed in
                 var user = userCredential.user;
+
+                console.log(user);
                 // ...
                 console.log('Đăng nhập thành công');
             })
@@ -130,8 +136,10 @@ class Login {
                 var errorMessage = error.message;
             });
 
-        const chatScreen = new Chat();
-        setScreen(chatScreen.container);
+            // console.log(firebase.auth().currentUser)
+
+        // const chatScreen = new Chat();
+        // setScreen(chatScreen.container);
     }
 
     handleRegister = (e) =>{

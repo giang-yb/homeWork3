@@ -4,7 +4,7 @@ class inputCommon {
     input = document.createElement('input');
     errMessage = document.createElement('div');
 
-    constructor(inputType, placeholder, name){
+    constructor(inputType, placeholder, name) {
         //this.label.innerHTML = label;
         this.input.type = inputType;
         this.input.placeholder = placeholder;
@@ -26,4 +26,4 @@ class inputCommon {
     }
 }
 
-export {inputCommon}
+export { inputCommon }
