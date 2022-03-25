@@ -1,57 +1,71 @@
-import { CreateConversationForm } from "./createConvesationForm.js";
 import { ConversationItem } from './conversationItem.js';
+import { CreateConversationForm } from "./createConvesationForm.js";
 
 class ConversationList {
-    container = document.createElement('div');
+  container = document.createElement('div');
+  btnCreateConversation = document.createElement('button');
+  creatConversationForm = new CreateConversationForm();
 
-    btnCreateConversation = document.createElement('button');
-    creatConversationForm = new CreateConversationForm();
-    onConversationItemClick;
-    conversations = [];
+  onConversationItemClick;
+  conversations = [];
 
-    constructor() {
-        this.btnCreateConversation.innerHTML = "+ Create Conversation";
-        this.container.classList.add("btnCreateConversation");
-        this.btnCreateConversation.addEventListener("click", this.handleVisible);
-        this.container.appendChild(this.btnCreateConversation);
-        this.container.appendChild(this.creatConversationForm.container);
+  constructor() {
+    this.btnCreateConversation.innerHTML = "+ Create Conversation";
+    this.container.classList.add("btnCreateConversation");
 
-    };
+    this.btnCreateConversation.addEventListener("click", this.handleVisible);
+    this.container.appendChild(this.btnCreateConversation);
+    this.container.appendChild(this.creatConversationForm.container);
 
-    setOnConversationItemClick = (listener) => {
-        this.onConversationItemClick = listener;
-    }
+  };
 
-    handleCreateConversationAdded = (id, name, users) => {
-        const conversation = new ConversationItem(id, name, users);
+  setOnConversationItemClick = (listener) => {
+    this.onConversationItemClick = listener;
+  }
 
-        conversation.setOnClick((id, name, users) => {
+  handleCreateConversationAdded = (id, name, users) => {
+    const conversation = new ConversationItem(id, name, users);
 
-            this.onConversationItemClick({
-                id:id,
-                name:name,
-                user:users,
-            });
-            
-        });
+    conversation.setOnClick((id, name, users) => {
 
-        this.conversations.push(conversation);
-        this.container.appendChild(conversation.container);
-    }
+      // Get conversation information
+      //console.log(id, name, users);
 
-    setStyleActiveConversation = (conversation) => {
-        this.conversations.forEach((item) => {
-          if (item.id === conversation.id) {
-            item.setActiveHighlight(true);
-          } else {
-            item.setActiveHighlight(false);
-          }
-        });
-      };
+      this.onConversationItemClick({
+        id: id,
+        name: name,
+        users: users,
+      });
 
-    handleVisible = () => {
-        this.creatConversationForm.setVisible(true);
-    };
+    });
+
+    this.conversations.push(conversation);
+    this.container.appendChild(conversation.container);
+  }
+
+  setStyleActiveConversation = (conversation) => {
+    this.conversations.forEach((item) => {
+      if (item.id === conversation.id) {
+        item.setActiveHighlight(true);
+      } else {
+        item.setActiveHighlight(false);
+      }
+    });
+  };
+
+  removedItem = (id) => {
+    // Update array
+    const index = this.conversations.findIndex((item) => item.id === id);
+    const conversation = this.conversations.find((item) => item.id === id);
+    this.conversations.splice(index, 1);
+
+    // Update UI
+    conversation.container.remove();
+  };
+
+  handleVisible = () => {
+    this.creatConversationForm.setVisible(true);
+  };
 
 }
 

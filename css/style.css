@@ -167,12 +167,12 @@ img {
     font-size: 24px;
 }
 
-.btnCreateConversation {
+/* .btnCreateConversation {
     position: absolute;
     left: 50%;
     top: 20%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .btnCreateConversation button {
     transition: box-shadow .4s;
@@ -206,4 +206,27 @@ img {
     width: 300px;
     font-size: 20px;
     /* margin-left: 15px; */
+}
+
+/* ========= Chat =========== */
+
+.header {
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.container {
+    display: flex;
+}
+
+.left-content {
+    flex: 1;
+}
+
+.right-content {
+    flex: 2;
+}
+
+.right__main-content {
+    display: flex;
 }
