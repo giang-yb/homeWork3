@@ -50,6 +50,8 @@ class Composer {
             sender: firebase.auth().currentUser.email,
             conversationId: this.activeConversation.id,
           });
+
+          this.input.value = "";
         }
       }
     };

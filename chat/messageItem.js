@@ -7,6 +7,10 @@ class MessageItem {
     this.content.innerHTML = content;
     this.sender.innerHTML = sender;
 
+    if (sender === firebase.auth().currentUser.email) {
+      this.container.classList.add("owner-message")
+    }
+
     this.container.appendChild(this.sender);
     this.container.appendChild(this.content);
   }

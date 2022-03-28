@@ -219,6 +219,10 @@ img {
     display: flex;
 }
 
+.owner-message{
+    text-align: right;
+}
+
 .left-content {
     flex: 1;
 }
@@ -229,4 +233,9 @@ img {
 
 .right__main-content {
     display: flex;
+    width: 100%;
+}
+
+.right__main-content > .chat-container{
+    flex: 2;
 }

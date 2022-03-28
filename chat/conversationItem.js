@@ -11,7 +11,7 @@ class ConversationItem {
       this.id = id;
       this.name = name;
       this.users = users;
-  
+
       this.txtName.innerHTML = name;
       this.txtNoOfUsers.innerHTML = `( ${users.length} )`;
   
@@ -24,6 +24,11 @@ class ConversationItem {
         listener(this.id, this.name, this.users);
       };
     };
+
+    setUsers = (users) => {
+        this.users = users;
+        this.txtNoOfUsers.innerHTML = `( ${users.length} )`;
+    }
   
     setActiveHighlight = (isHighlight) => {
       if (isHighlight) {

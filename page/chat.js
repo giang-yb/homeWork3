@@ -37,6 +37,7 @@ class Chat {
         divMainContent.classList.add("right__main-content")
 
         const divMessages = document.createElement("div");
+        divMessages.classList.add("chat-container")
         divMainContent.appendChild(divMessages)
         divMessages.appendChild(this.messageList.container);
         divMessages.appendChild(this.composer.container);
@@ -64,6 +65,8 @@ class Chat {
 
     subcribeConversation = () => {
         db.collection("conversations")
+        //check conversation of current user
+        .where("users", "array-contains", firebase.auth().currentUser.email)
             .onSnapshot((snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                     if (change.type === "added") {
